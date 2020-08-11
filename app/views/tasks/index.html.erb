@@ -1,0 +1,45 @@
+<div class="container">
+
+  <h1>My tasks</h1>
+
+
+  <ul class="list">
+    <% @tasks.each do |task| %>
+      <% done = task.completed  %>
+      <div class="items">
+        <% if done %>
+          <i class="far fa-check-square"></i>
+        <% else %>
+          <i class="far fa-square"></i>
+        <% end  %>
+        <li class="label"><%=link_to "#{task.title}", task_path(task) %></li>
+        <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe,
+         task_path(task),
+         {method: :delete,
+         data: { confirm: "Are you sure to destroy #{task.title}?" }} %>
+
+      </div>
+    <% end %>
+  </ul>
+
+  <p>
+    <i style="color:rgb(52, 152, 220)" class="fas fa-plus"></i>
+    <%= link_to "Add a new task", tasks_new_path %>
+  </p>
+
+</div>
+
+
+<!-- <ul class="list">
+  <% @tasks.each do |task| %>
+      <% done = task.completed ? "checked" : "" %>
+      <div class="items">
+        <input type="checkbox" id="<%task.id %>" name="<%task.title %>"
+               <%= done %>>
+        <label for="<%task.id %>"><li><%= task.title %></li></label>
+      </div>
+    <% end %>
+</ul> -->
+
+
+

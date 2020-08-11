@@ -1,0 +1,24 @@
+<div class="container">
+  <h1><%= @task.title %></h1>
+
+  <div class="uptate">
+    <%= link_to "Update this task", task_edit_path %>
+  </div>
+
+  <div class="detail">
+    <%= @task.details %>
+  </div>
+  <div style="margin-top: 20px;" >
+    <% if @task.completed %>
+      <i class="far fa-check-square"></i>
+      <span>"This task is completed!</span>
+    <%else%>
+      <i class="far fa-square"></i>
+      <span>"This task is not completed yet</span>
+    <% end %>
+  </div>
+
+  <%= link_to "Back to list", tasks_path %>
+
+</div>
+
